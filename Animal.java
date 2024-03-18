@@ -1,5 +1,7 @@
-package dennisMohle.myZoo.com;
+import java.util.HashMap;
+import java.util.Map;
 
+//Using your files. Don't fix what ain't broke.
 public class Animal {
 
     // Animal Class attributes
@@ -9,6 +11,7 @@ public class Animal {
 
     // Create a static attribute that belongs to the Animal class.
     public static int numOfAnimals = 0;
+    private static Map<String, Integer> speciesCount = new HashMap<>(); // best way to track Species
 
     // Animal Class constructors.
     public Animal(String name, String aSpecies, int anAge) {
@@ -19,6 +22,9 @@ public class Animal {
         species = aSpecies;
         age = anAge;
         numOfAnimals++;
+
+        speciesCount.put(species, speciesCount.getOrDefault(species, 0) + 1);
+
     }
 
     public Animal() {
@@ -51,5 +57,39 @@ public class Animal {
         this.species = species;
     }
 
+    public static int getSpeciesCount(String species) {
+        return speciesCount.getOrDefault(species, 0);
+    }
+}
+
+ class Hyena extends Animal{
+
+    public static void sound() {
+        System.out.println("Hyena laughing"); // just an animal noise
+    }
+
+}
+
+class Lion extends Animal{
+
+    public static void sound() {
+        System.out.println("Lion roaring");// just an animal noise
+    }
+
+}
+
+class Tiger extends Animal{
+
+    public static void sound() {
+        System.out.println("Tiger growling");// just an animal noise
+    }
+
+}
+
+class Bear extends Animal{
+
+    public static void sound() {
+        System.out.println("Bear growling");
+    }// just an animal noise
 
 }
